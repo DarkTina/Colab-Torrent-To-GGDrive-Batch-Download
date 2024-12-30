@@ -5,7 +5,7 @@ The "Downloads" folder: Completed downloads Files are moved here.
 The "Completed Torrents" folder: Torrent files that have finished downloading will be moved here.
 ### 2. Run code and 
 Copy the code from "Colab_Code.py" into "Colab Project".  
-### **Or use this link, and create a copy.###
+### **Or use this link, and create a copy. ###
    ```bash
    https://colab.research.google.com/drive/1OeXfmbOaAuDYTg6a_v1Zmh04oqj_8kQd
   ```
