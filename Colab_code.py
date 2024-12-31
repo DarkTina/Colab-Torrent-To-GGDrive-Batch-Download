@@ -46,7 +46,10 @@ def move_completed_files(handle, torrent_info):
         file_path = torrent_info.files().file_path(idx)
         file_size = torrent_info.files().file_size(idx)
         source_path = os.path.join(temp_download_folder, file_path)
-        destination_path = os.path.join(downloads_folder, os.path.basename(file_path))
+        destination_path = os.path.join(downloads_folder, file_path)  # Preserve folder structure
+
+        # Create destination folder if it doesn't exist
+        os.makedirs(os.path.dirname(destination_path), exist_ok=True)
 
         if progress == file_size:  # File is fully downloaded
             if os.path.exists(source_path):
