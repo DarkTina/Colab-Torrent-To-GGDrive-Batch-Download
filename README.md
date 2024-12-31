@@ -7,7 +7,7 @@ The "Completed Torrents" folder: Torrent files that have finished downloading wi
 Copy the code from "Colab_Code.py" into "Colab Project".  
 ### **Or use this link, and create a copy. ###
    ```bash
-   https://colab.research.google.com/drive/1OeXfmbOaAuDYTg6a_v1Zmh04oqj_8kQd
+   https://colab.research.google.com/drive/1FvLRsj8rqp8sp8D06wq5FMxdWOd7qL9a
   ```
 ### 3. Upload the Torrent files to the "Torrents" folder. ###
 ### 4. NOTE ###
