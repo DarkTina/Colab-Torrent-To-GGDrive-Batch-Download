@@ -11,7 +11,5 @@ Copy the code from "Colab_Code.py" into "Colab Project".
   ```
 ### 3. Upload the Torrent files to the "Torrents" folder. ###
 ### 4. NOTE ###
-"folder-type torrent", "multiple files torrents" will be full downloaded to Colab's memory first, and only then moved to Google Drive.
-(This ensures the files you need are not corrupted, but it consumes a lot of Colab's memory.)"
-You can add Torrents to the "Torrents" folder while the tool is running; the tool scans for torrents every 60 seconds.
-The maximum number of files downloaded simultaneously: 32.
+Version 2.1 Important update for "folder-type torrent", "multiple files torrents"
+Files that are 100% downloaded will be moved to Google Drive immediately. Your Colab storage will be freed up quickly.
