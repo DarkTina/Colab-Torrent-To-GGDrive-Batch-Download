@@ -11,7 +11,10 @@ Copy the code from "Colab_Code.py" into "Colab Project".
   ```
 ### 3. Upload the Torrent files to the "Torrents" folder. ###
 ### 4. NOTE ###
->Version 2.1 Important update for "folder-type torrent", "multiple files torrents".
+>Version 2.2 Important update for "folder-type torrent", "multiple files torrents".
+>
+>Fixed folder structure issues.
 >
 >Files that are 100% downloaded will be moved to Google Drive immediately.
-Your Colab storage will be freed up quickly.
+>
+>Your Colab storage will be freed up quickly.
