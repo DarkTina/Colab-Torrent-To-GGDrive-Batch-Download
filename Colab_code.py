@@ -25,13 +25,22 @@ os.makedirs(torrent_folder, exist_ok=True)
 os.makedirs(downloads_folder, exist_ok=True)
 os.makedirs(completed_torrents_folder, exist_ok=True)
 
-# Maximum number of concurrent torrents
-MAX_ACTIVE_TORRENTS = 32
+# Max number files
+MAX_ACTIVE_FILES = 24
+# Max files per torrent
+MAX_FILES_PER_TORRENT = 24
 
 # Torrent management
 active_torrents = []
 session = lt.session()
 session.listen_on(6881, 6891)
+
+def count_active_files():
+    """Count the total number of files being downloaded."""
+    total_files = 0
+    for handle, _, torrent_info in active_torrents:
+        total_files += torrent_info.num_files()
+    return total_files
 
 # Function to add a torrent to the download list
 def add_torrent(file_path):
@@ -43,6 +52,9 @@ def add_torrent(file_path):
 def move_completed_files(handle, torrent_info):
     file_progress = handle.file_progress()
     for idx, progress in enumerate(file_progress):
+        if idx >= MAX_FILES_PER_TORRENT:
+            break  # Skip files beyond the limit
+
         file_path = torrent_info.files().file_path(idx)
         file_size = torrent_info.files().file_size(idx)
         source_path = os.path.join(temp_download_folder, file_path)
@@ -63,12 +75,13 @@ def move_completed_files(handle, torrent_info):
 while True:
     torrent_files = [f for f in os.listdir(torrent_folder) if f.endswith('.torrent')]
 
-    # Add new torrents if below MAX_ACTIVE_TORRENTS
-    while len(active_torrents) < MAX_ACTIVE_TORRENTS and torrent_files:
+    # Add new torrents if below MAX_ACTIVE_FILES
+    while torrent_files and count_active_files() < MAX_ACTIVE_FILES:
         torrent_file = torrent_files.pop(0)
         torrent_path = os.path.join(torrent_folder, torrent_file)
         handle = add_torrent(torrent_path)
         torrent_info = lt.torrent_info(torrent_path)
+
         active_torrents.append((handle, torrent_path, torrent_info))
 
     # Calculate total download and upload speeds
